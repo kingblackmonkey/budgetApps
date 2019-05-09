@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <form class="header-top">
+                 <label for="description" class="type">
+                    <select class="input-sign">                    
+                        <option value="inc">+</option>
+                        <option value="exp">-</option>                    
+                    </select>
+                </label>
+                
+                <label for="description" class="des"><input type="text" name="description" id="description" placeholder="Description"></label>
+                <label for="amount" class="amount"> <input type="number" name="number" id="amount" placeholder="0"min="1" ></label>                
+                
+                <button class="btn-add" type="submit"><i class="icon ion-ios-add-circle-outline"></i> </button>
+            </form>          
+            <div class="header-bottom">
+                <h1 class="budget-banner">Budget</h1>
+                <h1 class="budget-banner">$ <span class="budget-total">0</span> </h1>
+                <h2 class="budget-banner">Income $ <span class="budget-inc">0</span></h2>
+                <h2 class="budget-banner">Expense $ <span class="budget-exp">0</span></h2>
+
+            </div>
+        </header>        
+        
+        <div class="income-container">
+            <div class="income">
+                <h2 class="income-banner">Income</h2>
+                <ul class="income-list">
+                    <!-- <li class="income-item" id="1" data-type="inc">
+                        <div class="income-item-number item">$4000</div>
+                        <div class="income-item-text item">Sold My Car</div> 
+                        <div class="item__delete item">
+                            <button class="item-delete-btn"><i class="icon ion-ios-close"></i></button>
+                        </div>                     
+                    </li> -->
+
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="expense-container">
+            <div class="expense">
+                <h2 class="expense-banner">Expense</h2>
+                <ul class="expense-list">
+                    <!-- <li class="expense-item" id="2" data-type="exp">
+                        <div class="expense-item-number item">$2000</div>
+                        <div class="expense-item-text item ">Rent</div>
+                        <div class="expense-item-info item">
+                            <div class="expense-item-percentage ">50%</div>
+                            <div class="item__delete">
+                                <button class="item-delete-btn "><i class="icon ion-ios-close"></i></button>
+                            </div>                         
+                        </div>                        
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
