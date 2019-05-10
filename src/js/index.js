@@ -7,7 +7,7 @@ window.data = data;
 
 
 
-
+//event handler for btn add
 elements.headerTop.addEventListener('click', (evt)=>{
     evt.preventDefault();
     if(elements.description.value!==''&& elements.amount.value > 0){
@@ -34,8 +34,24 @@ elements.headerTop.addEventListener('click', (evt)=>{
 
 })
 
-
-
+//event handler for delete btn
+let incListAndExpList = [elements.inc, elements.exp];
+incListAndExpList.forEach((item)=>{
+    item.addEventListener('click',(evt)=>{
+          if (evt.target.matches('.item__delete, .item__delete * '))  {
+           let listItem = evt.target.closest('.income-item, .expense-item') ;
+        
+                //  remove item from data model  
+           data.removeItemFromDataModel( listItem.dataset.type, listItem.id)
+        //    remove item from userinterface
+                dataView.removeItemFromUserInterface(listItem.id)
+                //calcualte total income or total expense and  budget
+                   let total =  data.calculateBudget(listItem.dataset.type);
+                 //display total income ,expense, and budget  to user interface   
+                    dataView.displayBudget(total);
+          }
+    })
+});
 
 
 

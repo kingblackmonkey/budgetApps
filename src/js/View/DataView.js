@@ -21,7 +21,7 @@ export let getDataFromUserInterface = ()=>{
 }
 
 
-//create icome item or expense item
+
 
 
 
@@ -62,8 +62,15 @@ export let addItemToUserInterface = (item)=>{
 //display total income, total expense and budget to user interface
 
 export let displayBudget = (result)=>{
+
  //display total income and total expense
  document.querySelector(`.budget-${result.type}`).innerHTML = result.total;
  //display total budget
  document.querySelector('.budget-total').innerHTML = result.totalBudget;
+}
+
+
+export let removeItemFromUserInterface = (id)=>{
+    let listItem = document.querySelector(`#${id}`);
+    listItem.parentElement.removeChild(listItem);
 }

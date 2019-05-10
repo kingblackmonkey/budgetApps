@@ -6,4 +6,5 @@ export let   elements = {
    amount: document.querySelector('#amount'),
    inc: document.querySelector('.income-list'),    
    exp: document.querySelector('.expense-list'),
+   
 }
