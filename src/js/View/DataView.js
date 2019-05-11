@@ -46,7 +46,7 @@ export let addItemToUserInterface = (item)=>{
                         <div class="expense-item-number item">$${item.amount}</div>
                         <div class="expense-item-text item ">${item.description}</div>
                         <div class="expense-item-info item">
-                            <div class="expense-item-percentage ">50%</div>
+                            <div class="expense-item-percentage ">0%</div>
                             <div class="item__delete">
                                 <button class="item-delete-btn "><i class="icon ion-ios-close"></i></button>
                             </div>                         
@@ -73,4 +73,34 @@ export let displayBudget = (result)=>{
 export let removeItemFromUserInterface = (id)=>{
     let listItem = document.querySelector(`#${id}`);
     listItem.parentElement.removeChild(listItem);
+}
+//display total expense percentage 
+export let displayExpPercent = (percent, totalBudget)=>{
+    if(totalBudget >= 0){
+         document.querySelector('.header-bottom h4').style.visibility ='visible'
+         document.querySelector('.budget-exp-percentage').innerHTML = percent;
+    }else{
+         document.querySelector('.header-bottom h4').style.visibility ='hidden'
+    }
+    
+   
+}
+
+//display individual expense percentage 
+export let displayIndividualExpPercent = (result)=>{
+    let expPercentList = Array.from(document.querySelectorAll('.expense-item-percentage'));
+    if(result){
+    
+  expPercentList.forEach((item,index)=>{
+      let str = `${result[index]}%`
+      item.style.visibility = 'visible'; 
+    item.innerHTML = str;
+  });
+    }else{
+        expPercentList.forEach((item,index)=>{
+            
+          item.style.visibility = 'hidden';
+        });
+    }
+ 
 }
