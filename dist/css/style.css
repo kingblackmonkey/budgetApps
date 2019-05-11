@@ -38,6 +38,10 @@ form button{
     margin: 1rem 0;
 }
 
+.header-bottom h4{
+    visibility: hidden;
+}
+
 /* income and expense style */
 .item{
     text-align: center;

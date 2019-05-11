@@ -6,6 +6,28 @@ let data = new DATA();
 window.data = data;
 
 
+//add button and delete button will share this functionalities
+//cal culate budget, display budget,calculate total exp percentage, display percentage
+let  renderResult = (type) => {
+    //calcualte total income or total expense and  budget
+    let total =  data.calculateBudget(type);        
+  
+    //display total income ,expense, and budget to user interface   
+       dataView.displayBudget(total);
+          
+    //calculate total  expense percentage 
+        data.calculateExpPercent() 
+        //display total exp percentage
+        dataView.displayExpPercent(data.expPercentage, data.totalBudget);
+    //calcullate individual expense percentage in the list of  expense and income   
+     let result=  data.calculateIndividualExpPercent();
+     //display individual expense percentage to uer interface     
+    dataView.displayIndividualExpPercent(result);
+
+}
+
+
+
 
 //event handler for btn add
 elements.headerTop.addEventListener('click', (evt)=>{
@@ -20,15 +42,13 @@ elements.headerTop.addEventListener('click', (evt)=>{
         let item = data.addItemToData(result.type, result.desscription, result.amount);
         //display item to user interface
         dataView.addItemToUserInterface(item);
-        //calcualte total income or total expense and  budget
-            let total =  data.calculateBudget(item.type);
-        //display total income ,expense, and budget  to user interface   
-            dataView.displayBudget(total);
-        
+        //render result
+        // calculate budget, display budget,calculate total exp percentage, display percentage
+        renderResult(item.type)    
+    
         }
     }
  
-
 
 
 
@@ -45,10 +65,8 @@ incListAndExpList.forEach((item)=>{
            data.removeItemFromDataModel( listItem.dataset.type, listItem.id)
         //    remove item from userinterface
                 dataView.removeItemFromUserInterface(listItem.id)
-                //calcualte total income or total expense and  budget
-                   let total =  data.calculateBudget(listItem.dataset.type);
-                 //display total income ,expense, and budget  to user interface   
-                    dataView.displayBudget(total);
+        // calculate budget, display budget,calculate total exp percentage, display percentage       
+                renderResult(listItem.dataset.type)
           }
     })
 });

@@ -68,14 +68,44 @@ export default class DATA{
     }
 
 
-
-
-
-    //cal calculate expense percentage
-    // calculateExpPercent(){
-    //     let result = this.total.exp / this.total.inc * 100;
+    //calculate total expense percentage
+    calculateExpPercent(){
+        let result = 0;
+        if(this.data.inc.length > 0){
+            result = this.total.exp / this.total.inc * 100;            
+        }
+        this.expPercentage = Math.round(result) ;
         
-    // }
+    }
+
+    //calculate individual expense percentage
+    calculateIndividualExpPercent(){
+        if(this.totalBudget >= 0 && this.total.exp.length !== 0){
+            //extract inc amount into array
+            let expAmount = this.data.exp.map((item)=>{
+                return item.amount
+            });
+            
+            
+            let incAmount = this.data.inc.map((item)=>{
+                return item.amount
+            });
+
+            // total the income
+           let incTotal = incAmount.reduce((total = 0, curr)=>{
+                return total + curr
+            })
+            // calculate percentage exp
+           expAmount=  expAmount.map((item)=>{
+                  return Math.round(item/incTotal*100) 
+           });
+
+           return expAmount;
+        }else{
+            return false;
+        }
+
+    }
 
 
     // remove item from data model
@@ -100,26 +130,3 @@ export default class DATA{
 
 
 
-// async getData () {
-//     try{
-//         // this proxy does not work anymore but use chrome extension will work temporarily
-//     // const proxy = 'https://cors-anywhere.herokuapp.com/';
-//     // const proxy = 'https://crossorigin.me/';	
-//     const key = 'c91c51ac267d0b8413dba35491bc1e98';
-
-//     let res = await fetch(`https://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=${key}&q=pizza`)
-//         await res.json();
-    
-//     // this.results = res.data.recipes;
-//     console.log('i run first')
-//     return res
-
-
-    
-//     }
-
-//     catch(error){
-//         console.log(error);
-//     }
-
-// }
