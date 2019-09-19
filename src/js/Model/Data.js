@@ -80,7 +80,8 @@ export default class DATA{
 
     //calculate individual expense percentage
     calculateIndividualExpPercent(){
-        if(this.totalBudget >= 0 && this.total.exp.length !== 0){
+       
+        if(this.totalBudget >= 0 && this.data.exp.length !== 0 && this.data.inc.length !== 0 ){
             //extract inc amount into array
             let expAmount = this.data.exp.map((item)=>{
                 return item.amount
