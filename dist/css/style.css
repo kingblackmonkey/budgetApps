@@ -3,14 +3,40 @@
    list-style: none;
    padding: 0;
    margin: 0;
+   font-weight: 100;
+   
 }
 
-/* =====form budget */
+
+:root {
+    --black: #002626;
+    --green: #95c623;
+    --dark-blue:#0e4749;
+    --orange:#e55812;
+    --off-white: #efe7da;
+
+  }
+ body{
+    font-family: 'Roboto', sans-serif;
+     
+    padding-top: 3rem;
+      background: #34e89e;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #0f3443, #34e89e);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #0f3443, #34e89e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      
+  }
+
+/* container */
 .container {
     width: 90%;
-    height: 100vh;
-    margin: 3rem auto;
+    height: 100%;
+    margin: 0 auto;
+    
+    background: var(--off-white);
+    border-radius: 1.5rem;
 }
+/* =====form budget */
+
 
 .header-top label, .header-top button{
     display: block;
@@ -27,26 +53,130 @@ label *{
 
 }  
 
-form button{
-    width: 100%;
+.header-top{
+    /* background: var(--green); */
+    padding: 1rem .5rem;
+    border-radius: 1.5rem;
+    
+}
+
+.header-bottom{
+    background-image: linear-gradient(rgba(0, 0, 0, .6),
+     rgba(0, 0, 0, 0.2)),
+      url(../img/trains-4184537_1920.jpg);
+      background-size: cover;
+      background-position: center;
+      padding: .7rem 0;
+}
+
+select, input{
+    border-radius: 1rem;
+    border: none;
+    outline-color: none;
+    padding: .8rem;
+
+   
+}
+select:focus, input:focus{
+    border-color: none;
+    outline: none;
+   border:1px solid  #95c623;
+   
+   
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+    
+    transition: all .5s;
+}
+
+.amount:hover input[type=number]::-webkit-inner-spin-button,
+.amount:hover input[type=number]::-webkit-outer-spin-button {
+    appearance: inherit;
+   
+}
+
+form .btn-add{
+    width: 30%;
     font-size: 1.5rem;
+   
+    padding:  .5rem;
+    border-radius: 1rem;
+    border: none;  
+    margin: 3rem auto;
+    cursor: pointer;
+    
+   
+    
+}
+
+
+form .btn-add:focus{
+    outline: none;
+    
+}
+
+form .btn-add i{
+    color: var(--green);
 }
 
 /* budget banner */
 .budget-banner{
     text-align: center;
     margin: 1rem 0;
+    color: #efe7da;
+ 
 }
 
 .header-bottom h4{
     visibility: hidden;
 }
 
+
+.header-bottom h2{
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: .3rem;   
+    border-radius: 1rem;
+}
+
+.header-bottom   h1:nth-child(1){
+    font-size: 3.3rem;
+    font-weight: 300;
+   }
+
+
+.header-bottom   h2:nth-child(3){
+ background: var(--green);
+}
+
+.header-bottom   h2:nth-child(4){
+    background: var(--orange);
+   }
+
 /* income and expense style */
+.income-banner{
+    color: var(--green);
+}
+
+.expense-banner{
+    color: var(--orange);
+    
+    
+}
+
+
 .item{
     text-align: center;
     margin: .7rem 0;
+    
 }
+
+
 
 .item__delete{
     padding: .5rem;
@@ -58,17 +188,21 @@ form button{
 }
 
 
+
+
 /* media queries */
 @media (min-width: 960px){
     /* grid layout */
     .container{
+        width: 80%;
         height: 100%;
         display: grid;
         grid-template-columns: repeat(2,1fr);
-        grid-template-rows:  20rem minmax(60rem, auto);
+        grid-template-rows:  20rem minmax(10rem, auto);
         grid-template-areas: 'header header'
                              'income-container expense-container'
         ;
+        grid-row-gap: 6rem;
     }
 
     .header{
@@ -104,15 +238,31 @@ form button{
         flex: 0 0 10%;
     }
 
-     .btn-add{
+    form .btn-add{
         flex: 0 0 5%;
+        margin:  0;
+        background: none; 
+        padding-top: 1rem;    
+            
+           
+           
+            
+    }
+
+
         
       
-    }
+    form .btn-add i{
+          font-size: 2rem;
+          
+    }  
+
+
 
     /* income and expense layout */
     .income-container, .expense-container{
         text-align: center;
+        padding: 2rem 5rem;
     }
 
 
